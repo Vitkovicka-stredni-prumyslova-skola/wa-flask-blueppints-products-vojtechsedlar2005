@@ -12,6 +12,10 @@ def index():
     
     return render_template('products/products.html', length = l, products = data, categories = categories)
 
+@products_bp.route('/products/add')
+def addProduct():
+    return render_template('products/new-product.html')
+
 @products_bp.route('/products/<int:id>')
 def detailOfProduct(id):
     data = GetSingleProducts(id)
@@ -28,6 +32,3 @@ def detailOfProduct(id):
     return render_template('products/detail.html', length = i, detailOfProduct=data,  features = fourProducts)
 
 
-@products_bp.route('/products/add')
-def addProduct():
-    return render_template('products/new-product.html')
