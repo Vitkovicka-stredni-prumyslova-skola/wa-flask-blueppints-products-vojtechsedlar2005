@@ -8,8 +8,9 @@ products_bp = Blueprint('products_bp', __name__,
 def index():
     data = GetAllProducts()
     l = len(data)
-    
     return render_template('products/products.html', length = l, products = data)
+
+
 
 @products_bp.route('/products/<int:id>')
 def detailOfProduct(id):
