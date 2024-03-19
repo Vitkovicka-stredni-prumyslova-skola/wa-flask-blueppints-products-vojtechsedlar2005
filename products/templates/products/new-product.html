@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.122.0">
-    <title>Checkout example · Bootstrap v5.3</title>
+    <title>Vložit produkt</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/checkout/">
 
@@ -15,7 +15,7 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
 
-<link href="{{ url_for('static', filename='assets/dist/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='assets/dist/css/bootstrap.min.css') }}" rel="stylesheet">
 
     <style>
       .bd-placeholder-img {
@@ -154,49 +154,80 @@
 
     
 <div class="container">
-  
-      <div class="col-md-7 col-lg-8">
-        <h4 class="mb-3">Billing address</h4>
+  <main>
+    <div class="py-5 text-center">
+      <img class="d-block mx-auto mb-4" src="{{ url_for('static', filename='img/VSPS-logo.png') }}" alt="" height="150">
+      <h2>Vložit nový produkt</h2>
+      <p class="lead">Vlože produkt, který se nahraje do API Fake Store.</p>
+    </div>
+
+    <div class="row g-5">
+      
+      <div class="py-5 text-left">
+        <h4 class="mb-3">Vytvořit nový produkt</h4>
         <form class="needs-validation" novalidate>
           <div class="row g-3">
-            <div class="col-sm-6">
-              <label for="firstName" class="form-label">First name</label>
-              <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+            <div class="col-sm-12">
+              <label for="title" class="form-label">Název</label>
+              <input type="text" class="form-control" id="title" placeholder="Vložte název produktu" value="" required>
               <div class="invalid-feedback">
-                Valid first name is required.
+                Vložte název produktu
               </div>
             </div>
 
-            <div class="col-sm-6">
-              <label for="lastName" class="form-label">Last name</label>
-              <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
+            <div class="col-sm-12">
+              <label for="img" class="form-label">Obrázek</label>
+              <input type="text" class="form-control" id="img" placeholder="Vložte URL adresu obrázku" value="" required>
               <div class="invalid-feedback">
-                Valid last name is required.
+                VLožte URL adresu obrázku
               </div>
             </div>
 
-            <div class="col-12">
-              <label for="username" class="form-label"></label>
+            <div class="col-sm-12">
+              <label for="description" class="form-label">Popis</label>
+              <textarea  class="form-control" id="description"  rows="3" placeholder="Vložte popis produktu" value="" required>
+              </textarea>
+              <div class="invalid-feedback">
+                Vložte popisek produktu
+              </div>
+            </div>
+            
+            <div class="col-md-6">
+              <label for="country" class="form-label">Kategorie</label>
+              <select class="form-select" id="country" required>
+                <option value="">–</option>
+                {%for itemCategory in category%}
+                
+                  <option>{{itemCategory}}</option>
+                
+                {%endfor%}
+              </select>
+              <div class="invalid-feedback">
+                Vyberte kategorii
+              </div>
+            </div>
+
+            <div class="col-6">
+              <label for="price" class="form-label">Cena</label>
               <div class="input-group has-validation">
-                <span class="input-group-text">@</span>
-                <input type="text" class="form-control" id="username" placeholder="Username" required>
+                <input type="text" class="form-control" id="price" placeholder="Základní cena produktu" required>
               <div class="invalid-feedback">
-                  
+                  Vložte cenu produktu
                 </div>
               </div>
             </div>
 
-
-          <hr class="my-4">
-
-          <button class="w-100 btn btn-primary btn-lg" type="submit">Continue to checkout</button>
+            <div class="py-5">
+              <button class="col-4 btn btn-primary btn-lg" type="submit">Uložit</button>
+            </div>
+          
         </form>
       </div>
     </div>
   </main>
 
   <footer class="my-5 pt-5 text-body-secondary text-center text-small">
-
+    <p class="mb-1">&copy; 2019–2024 Vítkovická střední průmyslová škola</p>
   </footer>
 </div>
 <script src="{{ url_for('static', filename='assets/dist/js/bootstrap.bundle.min.js') }}"></script>
